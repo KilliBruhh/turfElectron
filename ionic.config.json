@@ -1,0 +1,7 @@
+{
+  "name": "turfElectron",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
