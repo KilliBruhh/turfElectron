@@ -1,17 +1,47 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
+  <ion-header class="headerDiv">
+    <ion-text>Welcome!</ion-text>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
-</ion-content>
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title>Enter Your Turf: </ion-card-title>
+    </ion-card-header>
+    
+    <form (submit)="onAddTurf(form)" #form="ngForm">
+      
+      <ion-card-content>
+          <ion-label>Drink: </ion-label>
+          <ion-input type="text" name="name" required ngModel [(ngModel)]="drink"></ion-input>
+      </ion-card-content>
+
+            
+      <ion-card-content class="colorContent">
+        <ion-label>Color: </ion-label>
+        <ion-input type="color" id="colorPicker" value="#f6b73c" name="color" ngModel [(ngModel)]="color"></ion-input>
+      </ion-card-content>
+    
+      
+      <ion-card-content>
+        <ion-label>Amount: </ion-label>
+        <ion-input type="number" name="lastName" required ngModel [(ngModel)]="amount"></ion-input>
+      </ion-card-content>
+
+      <ion-card-content>
+        <ion-button type="submit">Add turf!</ion-button>
+      </ion-card-content>
+
+      <ion-card-content>
+        <ion-card>
+          <ion-text [ngStyle]="{'color': color}" *ngIf="showMsg"> {{msg}} </ion-text>
+        </ion-card>
+      </ion-card-content>
+
+    </form>
+
+  </ion-card>
+
+
+

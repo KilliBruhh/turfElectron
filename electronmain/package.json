@@ -1,0 +1,14 @@
+{
+  "name": "electronmain",
+  "version": "1.0.0",
+  "description": "Following the tutorial Electron1 - Inleidin + instalatie md",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "elec": "ionic cap copy && electron electronmain"
+  },
+  "author": "Killian",
+  "license": "ISC"
+}
+
+

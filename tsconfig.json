@@ -21,8 +21,12 @@
     "lib": [
       "es2018", 
       "dom"
-    ],
-    "useDefineForClassFields": false
+    ],  
+    "useDefineForClassFields": false,
+    "types": [
+      "./src/window-interface"
+    ]
+
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
