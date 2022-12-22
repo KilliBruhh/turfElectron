@@ -13,12 +13,24 @@ contextBridge.exposeInMainWorld(
     doThing: () => {
         console.log('doThing executed in preload.js');
     },
+    // Versions
     getElectronVersion: () => {
+        console.log("Hello electron");
         return process.versions.electron; //also possible 'node' or 'chrome'
-    }
+    },
+    getNodeVersion: () => {
+        console.log("Hello node");
+        return process.version;
+    },
+    // Testing
+    testIpc: () => {
+        console.log("Hello chrome");
+        return "Test";
+    },
+
+
 }
 );
-
 
 // testing IPC Methods
 const WINDOW_API = {    

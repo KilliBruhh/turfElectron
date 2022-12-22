@@ -40,7 +40,7 @@ app.on('activate', () => {
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
-if (process.platform !== 'darwin') app.quit()
+    if (process.platform !== 'darwin') app.quit()
 })
 
 // In this file you can include the rest of your app's specific main process
@@ -49,10 +49,11 @@ if (process.platform !== 'darwin') app.quit()
 // Example IPC communication
 // This listener listens on channel 'do-a-thing' defined in preload.js
 ipcMain.on('do-a-thing', (event, arg) => {
-console.log("Running in main process triggered from renderer");
-//example node.js api call:
-let hostname = os.hostname();
-event.reply('do-a-thing-reply', 'Hi this is main process, I am running on host: '+ hostname)
+    console.log("Running in main process triggered from renderer");
+        
+    //example node.js api call:
+    let hostname = os.hostname();
+    event.reply('do-a-thing-reply', 'Hi this is main process, I am running on host in event reply: '+ hostname)
 })
 
 // For auto reloading
