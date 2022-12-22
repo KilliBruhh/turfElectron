@@ -55,9 +55,15 @@ let hostname = os.hostname();
 event.reply('do-a-thing-reply', 'Hi this is main process, I am running on host: '+ hostname)
 })
 
-
 // For auto reloading
 // https://flaviocopes.com/electron-hot-reload/
 try {
     require('electron-reloader')(module)
 } catch (_) {}
+
+// Testing IPC Methods
+// greet is the channel we send the message on MUST BE SAME NAME AS IN preload.js!!
+ipcMain.on("greet", (event, args) => {
+    console.log("greet function loaded");
+    console.log(args)
+})
