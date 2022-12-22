@@ -33,6 +33,8 @@
 
 ## Link to theory
 ### How secure is my application?
+  - https://stackoverflow.com/questions/66913598/ipcrenderer-on-is-not-a-function
+  **TODO** Read this and write about it.
 
 ## Screenshots:
 
