@@ -24,7 +24,9 @@
   - the overview page (tab2) is the oage where you can view all of your turfs
   - the settings page (tab3) is where you can change some settings
 
-### Step 3 - 
+### Step 3 - IPC 
+- This setp is adding IPC to the project
+- 
 
 
 ## What changed?

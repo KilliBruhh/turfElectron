@@ -9,4 +9,4 @@ interface Window {
         /** Get the Electron version */
         getElectronVersion: () => string;
     };
-}
+    }
