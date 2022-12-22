@@ -3,6 +3,9 @@ import { NgForm } from '@angular/forms';
 
 import { BackendService } from '../backend.service';
 
+import { Plugin, Plugins } from '@capacitor/core';
+const { LocalNotification, Clipboard, Modals} = Plugins;
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -35,6 +38,8 @@ export class Tab1Page {
       this.bs.setLastName(this.amount);
     }
   }
+
+ 
 
 
 }
