@@ -77,3 +77,5 @@ const WINDOW_API = {
 }
 
 console.log('preload.js loaded');
+let currentURL = win.webContents.getURL();
+console.log(currentURL);

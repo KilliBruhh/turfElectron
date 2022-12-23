@@ -10,18 +10,53 @@ const { filter } = require('rxjs')
 // var fs = require('fs')
 
 
+
 const createWindow = () => {
 // Create the browser window.
 
 const mainWindow = new BrowserWindow({
+    
     width: 1300,
-    height: 1000,
+        sandbox: true,
+        height: 1000,
     webPreferences: {
         contextIsolation: true,
+        allowRunningInsecureContent: false,
+        experimentalFeatures: false,
+        sandbox: true,
         preload: path.join(__dirname, 'preload.js')
     }
 })
 
+// COntrol creaton of webview tags
+app.on('web-contents-created', (event, contents) => {
+    contents.on('will-attach-webview', (event, webPreferences, params) => {
+      // Strip away preload scripts if unused or verify their location is legitimate
+      delete webPreferences.preload
+  
+      // Disable Node.js integration
+      webPreferences.nodeIntegration = false
+  
+      // Verify URL being loaded
+      if (!params.src.startsWith('https://example.com/')) {
+        event.preventDefault()
+      }
+    })
+  })
+
+
+  // Limit navigation routes
+  const URL = require('url').URL
+
+  app.on('web-contents-created', (event, contents) => {
+    contents.on('will-navigate', (event, navigationUrl) => {
+      const parsedUrl = new URL(navigationUrl)
+  
+      if (parsedUrl.origin !== 'https://example.com') {
+        event.preventDefault()
+      }
+    })
+  })
 
 // and load the index.html of the app.
 mainWindow.loadFile('../www/index.html') //WDA aangepast!!
@@ -34,13 +69,13 @@ mainWindow.loadFile('../www/index.html') //WDA aangepast!!
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-createWindow()
+    createWindow()
 
-app.on('activate', () => {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
-})
+    app.on('activate', () => {
+        // On macOS it's common to re-create a window in the app when the
+        // dock icon is clicked and there are no other windows open.
+        if (BrowserWindow.getAllWindows().length === 0) createWindow()
+    })
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common
@@ -99,7 +134,7 @@ ipcMain.on('gotoWebpage', (event, args) => {
         case 'Cola':
             win.loadURL('https://nl.coca-cola.be/')
             break;
-        case 'IceTea':
+        case 'Sprite':
             win.loadURL('https://www.lipton.com/be/nl/')
             break;
 
