@@ -7,6 +7,13 @@ contextBridge.exposeInMainWorld(
     ipcSendToMain: () => {
         ipcRenderer.send('do-a-thing');
     },
+    ipcSaveToFile: () => {
+        ipcRenderer.send('saveFile');
+    },
+    gotoProductwebpage: (drink) => {
+        ipcRenderer.send('gotoWebpage', drink);
+    },
+
     ipcReceiveReplyFromMain: (channel, listener) => {
         ipcRenderer.on(channel, listener);
     },
@@ -54,10 +61,13 @@ contextBridge.exposeInMainWorld(
                     
         }
         console.log(responseError);
-    }
+    },
 
+   
 }
 );
+
+
 
 // testing IPC Methods
 const WINDOW_API = {    

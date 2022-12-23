@@ -1,20 +1,27 @@
 // index.js
 
-// Modules to control application life and create native browser window
+// Modules to control application life and create 
 const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const os = require('os')
+const { electron, title } = require('process')
+const { filter } = require('rxjs')
+// when i try to import fs i get and error on startup and i cannot use the nodejs api
+// var fs = require('fs')
+
 
 const createWindow = () => {
 // Create the browser window.
+
 const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1300,
+    height: 1000,
     webPreferences: {
         contextIsolation: true,
         preload: path.join(__dirname, 'preload.js')
     }
 })
+
 
 // and load the index.html of the app.
 mainWindow.loadFile('../www/index.html') //WDA aangepast!!
@@ -68,3 +75,38 @@ ipcMain.on("greet", (event, args) => {
     console.log("greet function loaded");
     console.log(args)
 })
+
+// Saving filess
+// Not functional because startup errors when using fs import
+ipcMain.on('saveFile', (event, args) => {
+
+ /*    fs.writeFile(path.join(__dirname, '../../turfFiles','turfX.txt'), (err) => {
+        if (err) throw err;
+        console.log('write complete');
+        event.reply('saveFile-reply','write complete')
+    })
+ */
+})
+
+// goto brand webpage
+
+
+ipcMain.on('gotoWebpage', (event, args) => {
+    const win = new BrowserWindow({ width: 1200, height: 1000 })
+    switch (args) 
+    {
+        
+        case 'Cola':
+            win.loadURL('https://nl.coca-cola.be/')
+            break;
+        case 'IceTea':
+            win.loadURL('https://www.lipton.com/be/nl/')
+            break;
+
+        // SHows white window --> SOLUTIOn has to be bigger than 800x600
+
+    }
+})
+
+
+

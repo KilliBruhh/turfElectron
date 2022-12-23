@@ -21,7 +21,11 @@ interface Window {
         // Validation
         validateForm: (errorCode : number) => string;
 
+        // save file
+        ipcSaveToFile: () => void;
 
+        // goto Store webpage
+        gotoProductwebpage: (brand : string) => void;
 
     };
     
