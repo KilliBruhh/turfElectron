@@ -56,6 +56,7 @@ export class Tab1Page {
 
   // Validation with IPC
   onAddTurf(form: NgForm) {
+    
     console.log("pressed button");
     if(!form.valid) {
       // invalid
