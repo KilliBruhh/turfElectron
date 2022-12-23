@@ -9,4 +9,10 @@ export class Tab2Page {
 
   constructor() {}
 
+
+  gotoProductWebpage(drink : string) {
+    console.log("pp vbutton pressed")
+    window.api.gotoProductwebpage(drink);
+  }
+
 }

@@ -11,7 +11,7 @@
             
             <ion-card-content>
                 <ion-icon name="beer"></ion-icon>
-                <ion-label> Cola </ion-label> <br>               
+                <ion-label (click)="gotoProductWebpage('Cola')"> Cola </ion-label> <br>               
             </ion-card-content>
                         
             <ion-card-content>
@@ -22,6 +22,28 @@
             <ion-card-content>
                 <ion-icon name="pricetag-outline"></ion-icon>
                 <ion-label> 13,5$ </ion-label> <br>               
+            </ion-card-content>
+
+        </ion-card>
+
+        <ion-card>
+            <ion-card-header>
+                <ion-card-header> Turf 2 </ion-card-header>
+            </ion-card-header>
+            
+            <ion-card-content>
+                <ion-icon name="beer"></ion-icon>
+                <ion-label (click)="gotoProductWebpage('IceTea')"> IceTea </ion-label> <br>               
+            </ion-card-content>
+                        
+            <ion-card-content>
+                <ion-icon name="basket-outline"></ion-icon>
+                <ion-label> 5 </ion-label> <br>               
+            </ion-card-content>
+                        
+            <ion-card-content>
+                <ion-icon name="pricetag-outline"></ion-icon>
+                <ion-label> 21,5$ </ion-label> <br>               
             </ion-card-content>
 
         </ion-card>

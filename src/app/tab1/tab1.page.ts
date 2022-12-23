@@ -33,6 +33,7 @@ export class Tab1Page {
       this.nodeVersion = window.api.getNodeVersion();
 
       window.api.ipcSendToMain();
+      window.api.ipcSaveToFile();
 
 
       window.api.ipcReceiveReplyFromMain('do-a-thing-reply',(event: any, arg: any) => {
@@ -76,12 +77,13 @@ export class Tab1Page {
       this.msg = window.api.validateForm(3);
       this.color = 'green';  
       console.log("succes");
-    }
-   // TODO : Msg is not working
+    }  
   }
 
   testButton() {
-    this.testStuff = window.api.testIpc();
+    console.log("testbutton clicked");
+    window.api.ipcSaveToFile();
+    window.api.ipcSendToMain();
   }
 
 }
