@@ -1,6 +1,8 @@
+// import { NgForm } from "@angular/forms";
+
 interface Window {
     api: {
-        
+            
         /** Sends a signal to the main process */
         ipcSendToMain: () => void;
         
@@ -16,8 +18,11 @@ interface Window {
         
         testIpc: () => string;
 
+        // Validation
+        validateForm: (errorCode : number) => string;
 
 
 
     };
-    }
+    
+}

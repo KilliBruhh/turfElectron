@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgZone } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
 selector: 'app-tab1',
@@ -13,13 +14,24 @@ export class Tab1Page {
   electronVersion = '';
   nodeVersion = '';
   testStuff = '';
+
+
+
+  drink = '';
+  turfColor = '';
+  amount = '';
+
+  color ='';
+  showMsg = false;
+  msg = '';
+
   randNum= 0;
 
 
   constructor(private ngZone: NgZone) {
       this.electronVersion = window.api.getElectronVersion();
       this.nodeVersion = window.api.getNodeVersion();
-      this.testStuff = window.api.testIpc();
+
       window.api.ipcSendToMain();
 
 
@@ -39,4 +51,38 @@ export class Tab1Page {
       });
   }
 
+ 
+
+  // Validation with IPC
+  onAddTurf(form: NgForm) {
+    console.log("pressed button");
+    if(!form.valid) {
+      // invalid
+      this.showMsg = true;
+      this.color = 'red';
+
+      if (this.drink == '') {
+        this.msg = window.api.validateForm(1);  
+        console.log("no drink");
+      }
+      else {
+        this.msg = window.api.validateForm(2);  
+        console.log("no amount");
+      }
+    }
+    else if(form.valid) {
+      // Valid
+      this.showMsg = true;
+      this.msg = window.api.validateForm(3);
+      this.color = 'green';  
+      console.log("succes");
+    }
+   // TODO : Msg is not working
+  }
+
+  testButton() {
+    this.testStuff = window.api.testIpc();
+  }
+
 }
+
